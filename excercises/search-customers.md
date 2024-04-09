@@ -6,5 +6,5 @@ Twoim zadaniem jest stworzenie aplikacji konsolowej, która umożliwi użytkowni
 
 ## Wymagania:
 - Użytkownik powinien mieć możliwość wprowadzenia kryteriów wyszukiwania, takich jak imię 
-- Aplikacja powinna wyświetlać wyniki wyszukiwania w czytelny sposób, prezentując informacje o znalezionych klientach
+- Aplikacja powinna wyświetlać wyniki wyszukiwania w czytelny sposób, prezentując informacje o znalezionych klientach (imię, nazwisko, adres email)
 - Wszelkie operacje na bazie danych Sakila (np. wyszukiwanie) powinny być realizowane przy użyciu Entity Framework Core (EF Core) do obsługi baz danych.
