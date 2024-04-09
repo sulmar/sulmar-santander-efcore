@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using SakilaConsoleApp.Abstractions;
+using System.Data;
 
 namespace SakilaConsoleApp.Infrastructure
 {
@@ -6,10 +9,8 @@ namespace SakilaConsoleApp.Infrastructure
     {
         // dotnet add package Microsoft.EntityFrameworkCore.SqlServer
 
-        public static SakilaContext Create()
+        public static SakilaContext Create(string connectionString)
         {
-            string connectionString = "Data Source=DESKTOP-RB5EAJ4\\SQLEXPRESS;Initial Catalog=sakila;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False";
-
             var options = new DbContextOptionsBuilder()
                 .UseSqlServer(connectionString)
                 .Options;
@@ -19,4 +20,43 @@ namespace SakilaConsoleApp.Infrastructure
             return context;
         }
     }
+
+    internal class FilmRepositoryFactory
+    {
+        public static IFilmRepository Create(ProviderType source, string connectionString)
+        {
+            switch(source)
+            {
+                case ProviderType.Dapper: return DapperDbFilmRepository(connectionString);
+                case ProviderType.EFCore: return EfDbFilmRepository(connectionString);
+
+                default: throw new NotSupportedException();
+            }
+        }
+
+        private static IFilmRepository EfDbFilmRepository(string connectionString)
+        {
+            var context = SakilaContextFactory.Create(connectionString);
+            IFilmRepository filmRepository = new EfDbFilmRepository(context);
+
+            return filmRepository;
+        }
+
+        private static IFilmRepository DapperDbFilmRepository(string connectionString)
+        {
+            
+            IDbConnection connection = new SqlConnection(connectionString);
+            IFilmRepository filmRepository = new DapperDbFilmRepository(connection);
+
+            return filmRepository;
+        }
+    }
+
+
+    enum ProviderType
+    {
+        Dapper,
+        EFCore
+    }
+    
 }

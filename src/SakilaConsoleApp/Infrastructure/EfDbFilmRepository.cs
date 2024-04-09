@@ -7,9 +7,9 @@ namespace SakilaConsoleApp.Infrastructure
     {
         private SakilaContext db;
 
-        public EfDbFilmRepository(SakilaContext context)
+        public EfDbFilmRepository(SakilaContext db)
         {
-            this.db = context;    
+            this.db = db;    
         }
 
         public List<FilmInfo> GetFilmIGetFilmsAllnfosAll()
