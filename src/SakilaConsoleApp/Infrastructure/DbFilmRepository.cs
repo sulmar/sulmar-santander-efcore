@@ -15,17 +15,13 @@ namespace SakilaConsoleApp.Infrastructure
         public List<FilmInfo> GetFilmIGetFilmsAllnfosAll()
         {
             // Przygotowanie wyrażenia
-            IQueryable<FilmInfo> query = db.Films
+            var filmInfos = db.Films
                 .Select(film => new FilmInfo        // Projekcja
                 {
                     Title = film.Title,
                     Description = film.Description,
                     ReleaseYear = film.ReleaseYear
-                });
-
-            // Wykonanie wyrażenia (materializacja)
-            // W tym miejscu zostanie utworzone zapytanie SQL i wysłane do bazy danych
-            List<FilmInfo> filmInfos = query.ToList();
+                }).ToList();
 
             return filmInfos;
         }
