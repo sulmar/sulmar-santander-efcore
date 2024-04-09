@@ -3,11 +3,11 @@ using SakilaConsoleApp.Model;
 
 namespace SakilaConsoleApp.Infrastructure
 {
-    internal class DbFilmRepository : IFilmRepository
+    internal class EfDbFilmRepository : IFilmRepository
     {
         private SakilaContext db;
 
-        public DbFilmRepository(SakilaContext context)
+        public EfDbFilmRepository(SakilaContext context)
         {
             this.db = context;    
         }

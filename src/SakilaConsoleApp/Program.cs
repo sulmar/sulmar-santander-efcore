@@ -8,7 +8,7 @@ Console.WriteLine("Hello, EF Core!");
 
 var context = SakilaContextFactory.Create();
 
-IFilmRepository filmRepository = new DbFilmRepository(context);
+IFilmRepository filmRepository = new EfDbFilmRepository(context);
 
 var films = filmRepository.GetFilmIGetFilmsAllnfosAll();
 
