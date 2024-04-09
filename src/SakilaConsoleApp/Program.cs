@@ -19,7 +19,7 @@ var context = new SakilaContext(options);
 
 IFilmRepository filmRepository = new DbFilmRepository(context);
 
-var films = filmRepository.GetAll();
+var films = filmRepository.GetFilmsAll();
 
 foreach (var film in films)
 {

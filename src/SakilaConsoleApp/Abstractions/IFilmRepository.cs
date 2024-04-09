@@ -4,6 +4,6 @@ namespace SakilaConsoleApp.Abstractions
 {
     internal interface IFilmRepository
     {
-        List<Film> GetAll();
+        List<Film> GetFilmsAll();
     }
 }
