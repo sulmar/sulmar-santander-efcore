@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SakilaConsoleApp;
+using SakilaConsoleApp.Abstractions;
+using SakilaConsoleApp.Infrastructure;
 
 Console.WriteLine("Hello, EF Core!");
 
@@ -15,7 +17,9 @@ var options = new DbContextOptionsBuilder()
 
 var context = new SakilaContext(options);
 
-var films = context.Films.ToList();
+IFilmRepository filmRepository = new DbFilmRepository(context);
+
+var films = filmRepository.GetAll();
 
 foreach (var film in films)
 {
