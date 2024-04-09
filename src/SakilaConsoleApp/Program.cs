@@ -19,11 +19,11 @@ var context = new SakilaContext(options);
 
 IFilmRepository filmRepository = new DbFilmRepository(context);
 
-var films = filmRepository.GetFilmsAll();
+var films = filmRepository.GetFilmIGetFilmsAllnfosAll();
 
 foreach (var film in films)
 {
-    Console.WriteLine($"{film.FilmId}, {film.Title}, {film.Description}");
+    Console.WriteLine($"{film.Title}, {film.Description}, {film.ReleaseYear}");
 }
 
 

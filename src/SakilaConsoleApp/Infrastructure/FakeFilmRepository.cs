@@ -5,6 +5,11 @@ namespace SakilaConsoleApp.Infrastructure
 {
     internal class FakeFilmRepository : IFilmRepository
     {
+        public List<FilmInfo> GetFilmIGetFilmsAllnfosAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Film> GetFilmsAll()
         {
             return new List<Film>
@@ -13,6 +18,11 @@ namespace SakilaConsoleApp.Infrastructure
                 new Film { FilmId = 2, Title = "B"},
                 new Film { FilmId = 3, Title = "C"},
             };
+        }
+
+        public List<Film> GetFilmsByTitle(string title)
+        {
+            throw new NotImplementedException();
         }
     }
 }
