@@ -19,9 +19,7 @@ var films = context.Films.ToList();
 
 foreach (var film in films)
 {
-    Console.WriteLine($"{film.film_id}, {film.title}, {film.description}");
+    Console.WriteLine($"{film.FilmId}, {film.Title}, {film.Description}");
 }
-
-
 
 
