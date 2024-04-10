@@ -20,7 +20,17 @@ namespace SakilaConsoleApp.Infrastructure
             };
         }
 
+        public List<Film> GetFilmsByRating(string rating)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Film> GetFilmsByTitle(string title)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<RatingStat> GetRatingStatAll()
         {
             throw new NotImplementedException();
         }

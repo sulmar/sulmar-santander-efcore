@@ -6,6 +6,8 @@ namespace SakilaConsoleApp.Abstractions
     {
         List<Film> GetFilmsAll();
         List<Film> GetFilmsByTitle(string title);
+        List<Film> GetFilmsByRating(string rating);
         List<FilmInfo> GetFilmIGetFilmsAllnfosAll();
+        List<RatingStat> GetRatingStatAll();
     }
 }

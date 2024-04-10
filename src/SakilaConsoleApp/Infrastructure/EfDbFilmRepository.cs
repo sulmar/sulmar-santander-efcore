@@ -31,16 +31,44 @@ namespace SakilaConsoleApp.Infrastructure
         public List<Film> GetFilmsAll()
         {
             // Zachłanne pobieranie powiązanego obiektu
-            var films = db.Films.Include(f => f.Language).ToList();
+            var films = db.Films
+                .OrderByDescending(f => f.ReleaseYear)
+                .TagWith(nameof(GetFilmsAll))
+                .ToList();
+
+            return films;
+        }
+
+        public List<Film> GetFilmsByRating(string rating)
+        {
+            var films = db.Films
+                .Where(film => film.Rating == rating)
+                .TagWith(nameof(GetFilmsByRating))
+                .ToList();
 
             return films;
         }
 
         public List<Film> GetFilmsByTitle(string title)
         {
-            var films = db.Films.Include(f => f.Language).Where(film => film.Title.StartsWith(title)).ToList();
+            var films = db.Films
+                .Include(f => f.Language)
+                .Where(film => film.Title.StartsWith(title))
+                .TagWith(nameof(GetFilmsByTitle))
+                .ToList();
 
             return films;
+        }
+
+        public List<RatingStat> GetRatingStatAll()
+        {
+            var results = db.Films
+                .GroupBy(f => f.Rating) 
+                .Select(g => new RatingStat { Rating = g.Key, Count = g.Count() })
+                .TagWith(nameof(GetRatingStatAll))
+                .ToList();
+
+          return results;
         }
     }
 }
