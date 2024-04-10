@@ -1,12 +1,7 @@
 ﻿using Dapper;
 using SakilaConsoleApp.Abstractions;
 using SakilaConsoleApp.Model;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SakilaConsoleApp.Infrastructure
 {
@@ -29,19 +24,23 @@ namespace SakilaConsoleApp.Infrastructure
         {
             string sql = "SELECT * FROM [film]";
 
-            var films = db.Query<Film>(sql).ToList();
+            var films = db.Query<Film>(sql).AsList();
 
             return films;
         }
 
         public List<Film> GetFilmsByTitle(string title)
         {
-            const string sql = "SELECT * FROM [film] WHERE title LIKE @title + '%'";
+            const string sql = "SELECT film_id as FilmId, title, description FROM [film] WHERE title LIKE @title + '%'";
 
-            var parameters = new DynamicParameters();
-            parameters.Add("@title", title);
+            // Przekazywanie parametrów poprzez DynamicParameters
+            // var parameters = new DynamicParameters();
+            // parameters.Add("@title", title);
 
-            var films = db.Query<Film>(sql, parameters).ToList();
+            // Przekazywanie parametrów poprzez typ anonimowy
+            var parameters = new { title };
+
+            var films = db.Query<Film>(sql, parameters).AsList();
 
             return films;
 
