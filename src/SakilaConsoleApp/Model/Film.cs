@@ -13,12 +13,6 @@ namespace SakilaConsoleApp.Model
         public string? ReleaseYear { get; set; }
     }
 
-    internal class Language
-    {
-        public byte LanguageId { get; set; } // PK
-        public required string Name { get; set; }
-    }
-
     internal class Film
     {
         public int FilmId { get; set; }
