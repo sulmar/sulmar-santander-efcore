@@ -30,9 +30,6 @@ namespace SakilaConsoleApp
                 .Property(p => p.ReleaseYear).HasColumnName("release_year");
 
             modelBuilder.Entity<Film>()
-                .Property(p => p.LanguageId).HasColumnName("language_id");
-
-            modelBuilder.Entity<Film>()
                 .Property(p => p.RentalDuration).HasColumnName("rental_duration");
 
             modelBuilder.Entity<Film>()
@@ -43,6 +40,12 @@ namespace SakilaConsoleApp
 
             modelBuilder.Entity<Film>()
                 .Property(p => p.LastUpdate).HasColumnName("last_update");
+
+            modelBuilder.Entity<Film>()
+                .Property(p => p.LanguageId).HasColumnName("language_id");
+
+            modelBuilder.Entity<Language>()
+                .Property(p => p.LanguageId).HasColumnName("language_id");
         } 
 
 

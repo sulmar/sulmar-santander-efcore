@@ -16,7 +16,7 @@ var films = filmRepository.GetFilmsByTitle("AL");
 
 foreach (var film in films)
 {
-    Console.WriteLine($"{film.Title}, {film.Description}, {film.ReleaseYear}");
+    Console.WriteLine($"{film.Title}, {film.Description}, {film.ReleaseYear}, {film.Language.Name}");
 }
 
 

@@ -1,5 +1,6 @@
 ﻿using SakilaConsoleApp.Abstractions;
 using SakilaConsoleApp.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace SakilaConsoleApp.Infrastructure
 {
@@ -9,7 +10,7 @@ namespace SakilaConsoleApp.Infrastructure
 
         public EfDbFilmRepository(SakilaContext db)
         {
-            this.db = db;    
+            this.db = db;
         }
 
         public List<FilmInfo> GetFilmIGetFilmsAllnfosAll()
@@ -28,14 +29,15 @@ namespace SakilaConsoleApp.Infrastructure
 
         public List<Film> GetFilmsAll()
         {
-            var films = db.Films.ToList();
+            // Zachłanne pobieranie powiązanego obiektu
+            var films = db.Films.Include(f => f.Language).ToList();
 
             return films;
         }
 
         public List<Film> GetFilmsByTitle(string title)
         {
-            var films = db.Films.Where(film => film.Title.StartsWith(title)).ToList();
+            var films = db.Films.Include(f => f.Language).Where(film => film.Title.StartsWith(title)).ToList();
 
             return films;
         }
