@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SakilaConsoleApp.Model;
 
-namespace SakilaConsoleApp
+namespace SakilaConsoleApp.Infrastructure
 {
     internal class SakilaContext : DbContext
     {
@@ -87,7 +87,12 @@ namespace SakilaConsoleApp
             modelBuilder.Entity<City>()
                 .Property(p => p.Name).HasColumnName("city");
 
-        } 
+            // Włącza automatyczne pobieranie encji zależnej (Include)
+            modelBuilder.Entity<Film>()
+                .Navigation(p => p.Language).AutoInclude();
+
+
+        }
 
 
     }
