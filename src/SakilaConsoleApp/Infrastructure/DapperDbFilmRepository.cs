@@ -17,7 +17,7 @@ namespace SakilaConsoleApp.Infrastructure
         public List<Customer> GetCustomersAll()
         {
             string sql = """
-                                SELECT 
+                               SELECT 
                 	c.customer_id as CustomerId,
                 	c.first_name as FirstName,
                 	c.last_name as LastName,
@@ -25,20 +25,25 @@ namespace SakilaConsoleApp.Infrastructure
                 	c.address_id AS AddressId,
                 	a.address_id AS AddressId,
                 	a.address AS AddressLine1,
-                	a.city_id AS CityId
+                	a.city_id AS CityId,
+                	ct.city_id AS CityId,
+                	ct.city AS [Name]
                 FROM customer AS c
                 	INNER JOIN address AS a
                 		ON c.address_id = a.address_id
+                	INNER JOIN city AS ct
+                		ON a.city_id = ct.city_id
                 """;
 
-            var customers = db.Query<Customer, Address, Customer>(sql,
-                map: (customer, address) =>
+            var customers = db.Query<Customer, Address, City, Customer>(sql,
+                map: (customer, address, city) =>
                 {
                     customer.Address = address;
+                    customer.Address.City = city;
 
                     return customer;
                 },
-                splitOn: "AddressId"
+                splitOn: "AddressId, CityId"
                 )                
                 .AsList();
 
