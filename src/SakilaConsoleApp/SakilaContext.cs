@@ -6,6 +6,7 @@ namespace SakilaConsoleApp
     internal class SakilaContext : DbContext
     {
         public DbSet<Film> Films { get; set; }
+        public DbSet<Customer> Customers { get; set; }
 
         public SakilaContext(DbContextOptions options)
             : base(options)
@@ -46,6 +47,30 @@ namespace SakilaConsoleApp
 
             modelBuilder.Entity<Language>()
                 .Property(p => p.LanguageId).HasColumnName("language_id");
+
+            modelBuilder.Entity<Customer>()
+              .HasKey(p => p.CustomerId); // Mapowanie klucza podstawowego PK (Primary Key)
+
+            modelBuilder.Entity<Customer>()
+                .ToTable("customer");  // Mapowanie nazwy tabeli
+
+            modelBuilder.Entity<Customer>()
+                .Property(p => p.CustomerId).HasColumnName("customer_id");
+
+            modelBuilder.Entity<Customer>()
+                .Property(p => p.FirstName).HasColumnName("first_name");
+
+            modelBuilder.Entity<Customer>()
+                .Property(p => p.LastName).HasColumnName("last_name");
+
+            modelBuilder.Entity<Customer>()
+              .Property(p => p.AddressId).HasColumnName("address_id");
+
+            modelBuilder.Entity<Address>()
+                .Property(p => p.AddressId).HasColumnName("address_id");
+
+            modelBuilder.Entity<Address>()
+                .Property(p => p.AddressLine1).HasColumnName("address");
         } 
 
 

@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SakilaConsoleApp.Infrastructure
 {
+
     internal class EfDbFilmRepository : IFilmRepository
     {
         private SakilaContext db;

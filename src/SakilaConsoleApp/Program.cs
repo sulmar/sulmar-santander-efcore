@@ -19,4 +19,12 @@ foreach (var film in films)
     Console.WriteLine($"{film.Title}, {film.Description}, {film.ReleaseYear}, {film.Language.Name}");
 }
 
+ICustomerRepository customerRepository = new EfDbCustomerRepository(SakilaContextFactory.Create(connectionString));
+
+var customers = customerRepository.GetCustomersAll();
+
+foreach (var customer in customers)
+{
+    Console.WriteLine(customer.Address.AddressLine1);
+}
 
