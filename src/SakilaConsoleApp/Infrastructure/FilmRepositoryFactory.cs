@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using SakilaConsoleApp.Abstractions;
 using System.Data;
 
@@ -13,6 +14,8 @@ namespace SakilaConsoleApp.Infrastructure
         {
             var options = new DbContextOptionsBuilder()
                 .UseSqlServer(connectionString)
+                .LogTo(Console.WriteLine, LogLevel.Trace)
+                .EnableSensitiveDataLogging()
                 .Options;
 
             var context = new SakilaContext(options);
