@@ -21,5 +21,10 @@ namespace SakilaConsoleApp.Infrastructure
                 
                 .ToList();
         }
+
+        public List<Customer> GetCustomersByFirstName(string firstName)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
