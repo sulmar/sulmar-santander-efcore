@@ -9,10 +9,4 @@
         public int AddressId { get; set; }
         public Address Address { get; set; }
     }
-
-    public class Address
-    {
-        public int AddressId { get; set; }
-        public string AddressLine1 { get; set; }
-    }
 }

@@ -71,6 +71,22 @@ namespace SakilaConsoleApp
 
             modelBuilder.Entity<Address>()
                 .Property(p => p.AddressLine1).HasColumnName("address");
+
+            modelBuilder.Entity<Address>()
+                .Property(p => p.AddressLine2).HasColumnName("address2");
+
+            modelBuilder.Entity<Address>()
+                .Property(p => p.PostalCode).HasColumnName("postal_code");
+
+            modelBuilder.Entity<Address>()
+               .Property(p => p.CityId).HasColumnName("city_id");
+
+            modelBuilder.Entity<City>()
+                .Property(p => p.CityId).HasColumnName("city_id");
+
+            modelBuilder.Entity<City>()
+                .Property(p => p.Name).HasColumnName("city");
+
         } 
 
 

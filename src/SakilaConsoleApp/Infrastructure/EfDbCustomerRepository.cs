@@ -15,7 +15,11 @@ namespace SakilaConsoleApp.Infrastructure
 
         public List<Customer> GetCustomersAll()
         {
-            return db.Customers.Include(c=>c.Address).ToList();
+            return db.Customers
+                .Include(c => c.Address)
+                    .ThenInclude(a => a.City)
+                
+                .ToList();
         }
     }
 }
