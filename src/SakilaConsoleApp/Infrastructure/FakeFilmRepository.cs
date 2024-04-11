@@ -5,6 +5,11 @@ namespace SakilaConsoleApp.Infrastructure
 {
     internal class FakeFilmRepository : IFilmRepository
     {
+        public void Add(Film film)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<FilmInfo> GetFilmIGetFilmsAllnfosAll()
         {
             throw new NotImplementedException();

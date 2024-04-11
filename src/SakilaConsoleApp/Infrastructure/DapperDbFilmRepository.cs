@@ -103,6 +103,11 @@ namespace SakilaConsoleApp.Infrastructure
             this.db = db;    
         }
 
+        public void Add(Film film)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<FilmInfo> GetFilmIGetFilmsAllnfosAll()
         {
             throw new NotImplementedException();

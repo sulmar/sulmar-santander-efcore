@@ -7,6 +7,7 @@ namespace SakilaConsoleApp.Infrastructure
     {
         public DbSet<Film> Films { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Language> Languages { get; set; }
 
         public SakilaContext(DbContextOptions options)
             : base(options)
@@ -90,6 +91,18 @@ namespace SakilaConsoleApp.Infrastructure
             // Włącza automatyczne pobieranie encji zależnej (Include)
             modelBuilder.Entity<Film>()
                 .Navigation(p => p.Language).AutoInclude();
+
+
+            modelBuilder.Entity<Language>()
+                .ToTable("language");
+
+            modelBuilder.Entity<Language>()
+               .HasKey(p=>p.LanguageId);
+
+            modelBuilder.Entity<Language>()
+                .Property(p=>p.LanguageId)
+                .ValueGeneratedOnAdd()
+                .HasColumnName("language_id");
 
 
         }

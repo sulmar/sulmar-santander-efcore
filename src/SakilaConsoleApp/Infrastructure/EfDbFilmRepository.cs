@@ -14,6 +14,15 @@ namespace SakilaConsoleApp.Infrastructure
             this.db = db;
         }
 
+        public void Add(Film film)
+        {
+            db.Films.Add(film);
+
+            Console.WriteLine(db.ChangeTracker.DebugView.LongView);
+
+            db.SaveChanges();
+        }
+
         public List<FilmInfo> GetFilmIGetFilmsAllnfosAll()
         {
             // Przygotowanie wyrażenia

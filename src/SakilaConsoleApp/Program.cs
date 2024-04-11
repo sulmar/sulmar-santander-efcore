@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using SakilaConsoleApp.Abstractions;
 using SakilaConsoleApp.Infrastructure;
+using SakilaConsoleApp.Model;
 
 Console.WriteLine("Hello, EF Core!");
 
@@ -11,7 +12,44 @@ Console.WriteLine("Hello, EF Core!");
 
 string connectionString = "Data Source=DESKTOP-RB5EAJ4\\SQLEXPRESS;Initial Catalog=sakila;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False;Application Name=SakilaConsoleApp";
 
-IFilmRepository filmRepository = FilmRepositoryFactory.Create(ProviderType.EFCore, connectionString);
+var context = SakilaContextFactory.Create(connectionString);
+
+ILanguageRepository languageRepository = new EfDbLanguageRepository(context);
+
+var languages = languageRepository.GetAllLanguages();
+
+Console.WriteLine("Wybierz język: ");
+foreach(var language in languages)
+{
+    Console.WriteLine(language.Name);
+}
+
+string selectedLanguageName = Console.ReadLine();
+
+var selectedLanguage = languages.Single(l => l.Name.TrimEnd() == selectedLanguageName);
+
+// Language language = new Language { Name = "Polish" };
+// languageRepository.Add(language);
+
+// IFilmRepository filmRepository = FilmRepositoryFactory.Create(ProviderType.EFCore, connectionString);
+
+IFilmRepository filmRepository = new EfDbFilmRepository(context);
+
+Film newFilm = new Film
+{
+    Title = "EFCore in Action",
+    Description = "Lorem ipsum",
+    Language = selectedLanguage,
+    Rating = "PG",
+    ReleaseYear = "2024",
+    RentalDuration = 3,
+    Length = 120,
+    RentalRate = 1m,
+    ReplacementCost = 2m,    
+    LastUpdate = DateTime.Now
+};
+
+filmRepository.Add(newFilm);
 
 //var films = filmRepository.GetFilmsByRating("PG-13");
 
