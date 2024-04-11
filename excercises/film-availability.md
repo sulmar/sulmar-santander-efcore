@@ -5,7 +5,7 @@ Twoim zadaniem jest stworzenie aplikacji konsolowej, która umożliwi wyszukiwan
 
 
 ## Wymagania:
-- Użytkownik powinien mieć możliwość wprowadzenia kryteriów wyszukiwania, takich jak tytuł filmu lub kategoria.
+- Użytkownik powinien mieć możliwość wprowadzenia kryteriów wyszukiwania, takich jak tytuł filmu.
 - Aplikacja powinna wyświetlać wyniki wyszukiwania w czytelny sposób, prezentując informacje o znalezionych filmach, takie jak tytuł, miasto wypożyczalni, ilość dostępnych sztuk w następujący sposób:
 
 | film_id | film_title | store_city | inventory_stack |
