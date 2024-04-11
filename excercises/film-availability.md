@@ -17,6 +17,6 @@ Twoim zadaniem jest stworzenie aplikacji konsolowej, która umożliwi wyszukiwan
 | ... | ... | ... | ... |
 
 
-- Wszelkie operacje na bazie danych Sakila powinny być realizowane przy użyciu Dapper.
+- Wszelkie operacje na bazie danych Sakila powinny być realizowane przy użyciu **Dapper** lub **EF Core**.
 
 
