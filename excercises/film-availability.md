@@ -11,9 +11,9 @@ Twoim zadaniem jest stworzenie aplikacji konsolowej, która umożliwi wyszukiwan
 | film_id | film_title | store_city | inventory_stack |
 | ---- | ---- | ---- | ---- |
 | 1 | ACADEMY DINOSAUR | Lethbridge | 3 |
-| 2 | ACADEMY DINOSAUR | Woodridge | 4 |
+| 1 | ACADEMY DINOSAUR | Woodridge | 4 |
 | 3 | ADAPTATION HOLES | Lethbridge | 2 |
-| 4 | ADAPTATION HOLES | Lethbridge | 1 |
+| 3 | ADAPTATION HOLES | Lethbridge | 1 |
 | ... | ... | ... | ... |
 
 
