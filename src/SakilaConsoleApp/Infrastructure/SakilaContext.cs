@@ -8,6 +8,7 @@ namespace SakilaConsoleApp.Infrastructure
         public DbSet<Film> Films { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Language> Languages { get; set; }
+        public DbSet<Inventory> Inventories { get; set; }
 
         public SakilaContext(DbContextOptions options)
             : base(options)
@@ -104,6 +105,25 @@ namespace SakilaConsoleApp.Infrastructure
                 .ValueGeneratedOnAdd()
                 .HasColumnName("language_id");
 
+
+            modelBuilder.Entity<Inventory>()
+                .ToTable("inventory");
+
+            modelBuilder.Entity<Inventory>()
+                .Property(p => p.StoreId)
+                .HasColumnName("store_id");
+
+            modelBuilder.Entity<Inventory>()
+                .Property(p => p.FilmId)
+                .HasColumnName("film_id");
+
+            modelBuilder.Entity<Store>()
+                .Property(p => p.StoreId)
+                .HasColumnName("store_id");
+
+            modelBuilder.Entity<Store>()
+                .Property(p => p.AddressId)
+                .HasColumnName("address_id");
 
         }
 

@@ -3,17 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SakilaConsoleApp", "SakilaConsoleApp\SakilaConsoleApp.csproj", "{D115C5A8-4DF6-46DB-B104-CB11CC6DFEFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SakilaConsoleApp", "SakilaConsoleApp\SakilaConsoleApp.csproj", "{D115C5A8-4DF6-46DB-B104-CB11CC6DFEFC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScaffoldSakilaConsoleApp", "ScaffoldSakilaConsoleApp\ScaffoldSakilaConsoleApp.csproj", "{0E40F75A-075D-4745-BAB2-E1EC55D77A2A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ScaffoldSakilaConsoleApp", "ScaffoldSakilaConsoleApp\ScaffoldSakilaConsoleApp.csproj", "{0E40F75A-075D-4745-BAB2-E1EC55D77A2A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CRUDSakilaConsoleApp", "CRUDSakilaConsoleApp\CRUDSakilaConsoleApp.csproj", "{D9A5402A-C205-463E-9BB4-C8F697C22F22}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D115C5A8-4DF6-46DB-B104-CB11CC6DFEFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -24,5 +23,15 @@ Global
 		{0E40F75A-075D-4745-BAB2-E1EC55D77A2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E40F75A-075D-4745-BAB2-E1EC55D77A2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E40F75A-075D-4745-BAB2-E1EC55D77A2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9A5402A-C205-463E-9BB4-C8F697C22F22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9A5402A-C205-463E-9BB4-C8F697C22F22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9A5402A-C205-463E-9BB4-C8F697C22F22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9A5402A-C205-463E-9BB4-C8F697C22F22}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4CCE6C78-1F0D-4BF0-8D4D-CDAB2378DBF7}
 	EndGlobalSection
 EndGlobal

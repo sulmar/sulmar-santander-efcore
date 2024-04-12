@@ -10,5 +10,6 @@ namespace SakilaConsoleApp.Abstractions
         List<FilmInfo> GetFilmIGetFilmsAllnfosAll();
         List<RatingStat> GetRatingStatAll();
         void Add(Film film);
+        List<FilmAvailability> GetFilmAvailabilityByTitle(string title);
     }
 }

@@ -108,6 +108,11 @@ namespace SakilaConsoleApp.Infrastructure
             throw new NotImplementedException();
         }
 
+        public List<FilmAvailability> GetFilmAvailabilityByTitle(string title)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<FilmInfo> GetFilmIGetFilmsAllnfosAll()
         {
             throw new NotImplementedException();

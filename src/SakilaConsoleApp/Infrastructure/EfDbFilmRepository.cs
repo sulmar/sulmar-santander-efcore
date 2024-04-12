@@ -23,6 +23,25 @@ namespace SakilaConsoleApp.Infrastructure
             db.SaveChanges();
         }
 
+        public List<FilmAvailability> GetFilmAvailabilityByTitle(string title)
+        {
+            var result = db.Inventories
+                .Include(i => i.Film)
+                .Include(i => i.Store)
+                    .ThenInclude(s => s.Address)
+                        .ThenInclude(a => a.City)
+                        .Where(i => i.Film.Title.Contains(title))
+                        .GroupBy(i => new { i.Film.Title, i.Store.Address.City.Name })
+                        .Select(g =>
+                            new FilmAvailability { Title = g.Key.Title, City = g.Key.Name, InventoryStack = g.Count() })
+                        .OrderBy(r => r.Title)
+                .ToList();
+
+            return result;
+
+
+        }
+
         public List<FilmInfo> GetFilmIGetFilmsAllnfosAll()
         {
             // Przygotowanie wyrażenia

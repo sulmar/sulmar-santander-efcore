@@ -14,6 +14,10 @@ string connectionString = "Data Source=DESKTOP-RB5EAJ4\\SQLEXPRESS;Initial Catal
 
 var context = SakilaContextFactory.Create(connectionString);
 
+IFilmRepository filmRepository = new EfDbFilmRepository(context);
+var results = filmRepository.GetFilmAvailabilityByTitle("bingo");
+
+
 ILanguageRepository languageRepository = new EfDbLanguageRepository(context);
 
 var languages = languageRepository.GetAllLanguages();
@@ -33,7 +37,7 @@ var selectedLanguage = languages.Single(l => l.Name.TrimEnd() == selectedLanguag
 
 // IFilmRepository filmRepository = FilmRepositoryFactory.Create(ProviderType.EFCore, connectionString);
 
-IFilmRepository filmRepository = new EfDbFilmRepository(context);
+
 
 Film newFilm = new Film
 {
