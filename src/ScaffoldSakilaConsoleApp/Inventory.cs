@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ScaffoldSakilaConsoleApp;
+namespace Sakila.Model;
 
 public partial class Inventory
 {

@@ -17,13 +17,31 @@ SakilaContext db = new SakilaContext();
 //}
 
 
+var result = db.Inventories
+    .Include(i => i.Film)
+    .Include(i => i.Store)
+        .ThenInclude(s => s.Address)
+            .ThenInclude(a => a.City)
+                .GroupBy(i => new  { i.Film.Title, i.Store.Address.City.City1 })
+                .Select(g => 
+                    new { FilmTitle = g.Key.Title, City = g.Key.City1, InventoryStack = g.Count() })
+                .OrderBy(r => r.FilmTitle)
+    .ToList(); 
+
+
+foreach (var item in result)
+{ 
+    Console.WriteLine($"FilmTitle: {item.FilmTitle}, City: {item.City}, InventoryStack: {item.InventoryStack}"); 
+}
+
+
 string title = "AFFAIR PREJUDICE";
 
 var query11 = db.Films.Where(f => f.Title.Contains(title));
 
 var query12 = query11.OrderBy(q => q.Rating);
 
-var results = query12    
+var results = query12
     .ToList();
 
 
@@ -46,8 +64,8 @@ var query2a = db.Films
 
 var query2b = query2a
     .SelectMany(f => f.Inventories)
-    .GroupBy(g => new { g.Film.Title, g.Store.Address.City})
-    .Select(g => new {  City = g.Key.City.City1, Count = g.Count() })
+    .GroupBy(g => new { g.Film.Title, g.Store.Address.City })
+    .Select(g => new { City = g.Key.City.City1, Count = g.Count() })
     .ToList();
 
 // W przypadku grupowania nie trzeba stosować Include
